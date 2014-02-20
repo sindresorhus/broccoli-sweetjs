@@ -1,0 +1,39 @@
+{
+  "name": "broccoli-sweetjs",
+  "version": "0.0.0",
+  "description": "Transpile Sweet.js macros",
+  "license": "MIT",
+  "repository": "sindresorhus/broccoli-sweetjs",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "broccoli build temp && mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "broccoli-plugin",
+    "sweet.js",
+    "sweet",
+    "macro",
+    "macros",
+    "compile",
+    "transpile"
+  ],
+  "dependencies": {
+    "broccoli-filter": "^0.0.1",
+    "sweet.js": "^0.4.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "broccoli": "^0.2.0",
+    "rimraf": "^2.2.6"
+  }
+}
