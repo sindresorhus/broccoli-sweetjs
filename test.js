@@ -8,8 +8,5 @@ afterEach(function () {
 });
 
 it('should transpile Sweet.js macros', function () {
-	assert.equal(
-		fs.readFileSync('temp/fixture.js', 'utf8'),
-		fs.readFileSync('fixture/expected.js', 'utf8')
-	);
+	assert(/var x\$\d{3} = \$y/.test(fs.readFileSync('temp/fixture.js', 'utf8')));
 });
