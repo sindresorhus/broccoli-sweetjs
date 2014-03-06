@@ -28,7 +28,7 @@
     "transpile"
   ],
   "dependencies": {
-    "broccoli-filter": "^0.0.1",
+    "broccoli-filter": "^0.1.1",
     "sweet.js": "^0.4.0"
   },
   "devDependencies": {
