@@ -1,4 +1,4 @@
-# [broccoli](https://github.com/joliss/broccoli)-sweetjs [![Build Status](https://travis-ci.org/sindresorhus/broccoli-sweetjs.png?branch=master)](https://travis-ci.org/sindresorhus/broccoli-sweetjs)
+# [broccoli](https://github.com/joliss/broccoli)-sweetjs [![Build Status](https://travis-ci.org/sindresorhus/broccoli-sweetjs.svg?branch=master)](https://travis-ci.org/sindresorhus/broccoli-sweetjs)
 
 > Transpile [Sweet.js](https://github.com/mozilla/sweet.js) macros
 
@@ -7,12 +7,12 @@
 
 ## Install
 
-```
-npm install --save broccoli-sweetjs
+```bash
+$ npm install --save broccoli-sweetjs
 ```
 
 
-## Example
+## Usage
 
 ```js
 var sweetjs = require('broccoli-sweetjs');
@@ -41,4 +41,4 @@ Use the same syntax as you would in `require()`:
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
