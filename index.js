@@ -14,7 +14,7 @@ function SweetjsFilter(inputTree, options) {
 SweetjsFilter.prototype = Object.create(Filter.prototype);
 SweetjsFilter.prototype.constructor = SweetjsFilter;
 
-SweetjsFilter.prototype.extensions = ['js'];
+SweetjsFilter.prototype.extensions = ['js', 'sjs'];
 SweetjsFilter.prototype.targetExtension = 'js';
 
 SweetjsFilter.prototype.processString = function (str) {
