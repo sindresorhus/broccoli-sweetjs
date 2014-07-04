@@ -4,6 +4,7 @@ var path = require('path');
 var mkdirp = require('mkdirp');
 var sweetjs = require('sweet.js');
 var walkSync = require('walk-sync');
+var convert = require('convert-source-map');
 var CachingWriter = require('broccoli-caching-writer');
 
 function SweetjsFilter(inputTree, options) {
@@ -31,8 +32,9 @@ SweetjsFilter.prototype.updateCache = function(srcDir, destDir) {
 			var destRelativePath = relativePath.replace('.sjs', '.js');
 			if (options.sourceMap) {
 				var mapRelativePath = destRelativePath + '.map';
+				var sourceMap = convert.fromJSON(result.sourceMap).setProperty('sourcesContent', [srcCode]).toJSON();
 				fs.writeFileSync(path.join(destDir, destRelativePath), result.code + '\n//# sourceMappingURL=' + mapRelativePath);
-				fs.writeFileSync(path.join(destDir, mapRelativePath), result.sourceMap);
+				fs.writeFileSync(path.join(destDir, mapRelativePath), sourceMap);
 			} else {
 				fs.writeFileSync(path.join(destDir, destRelativePath), result.code);
 			}
