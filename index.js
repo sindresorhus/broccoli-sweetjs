@@ -29,8 +29,13 @@ SweetjsFilter.prototype.updateCache = function(srcDir, destDir) {
 			fileOptions['filename'] = relativePath;
 			var result = sweetjs.compile(srcCode, fileOptions);
 			var destRelativePath = relativePath.replace('.sjs', '.js');
-			fs.writeFileSync(path.join(destDir, destRelativePath), result.code);
-			if (options.sourceMap) fs.writeFileSync(path.join(destDir, destRelativePath + '.map'), result.sourceMap);
+			if (options.sourceMap) {
+				var mapRelativePath = destRelativePath + '.map';
+				fs.writeFileSync(path.join(destDir, destRelativePath), result.code + '\n//# sourceMappingURL=' + mapRelativePath);
+				fs.writeFileSync(path.join(destDir, mapRelativePath), result.sourceMap);
+			} else {
+				fs.writeFileSync(path.join(destDir, destRelativePath), result.code);
+			}
 		}
 	});
 }
