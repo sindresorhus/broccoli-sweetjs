@@ -40,7 +40,7 @@ Use the same syntax as you would in `require()`:
 
 ##### sourceMap
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Whether you want to output a [source map] for easier debugging.
@@ -49,7 +49,7 @@ Whether you want to output a [source map] for easier debugging.
 
 ##### readableNames
 
-Type: `Boolean`
+Type: `Boolean`  
 Default: `false`
 
 Whether you want to clean up variables that were renamed from hygiene (foo$100 becomes foo where ever possible).
