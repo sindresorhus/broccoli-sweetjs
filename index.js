@@ -14,6 +14,12 @@ function SweetjsFilter(inputTree, options) {
 
 	this.inputTree = inputTree;
 	this.options = options || {};
+	this.options.modules = (this.options.modules || []).map(function(path) {
+		return sweetjs.loadNodeModule(process.cwd(), path);
+	});
+	(this.options.readtableModules || []).forEach(function(mod) {
+		sweetjs.setReadtable(mod);
+	});
 }
 
 SweetjsFilter.prototype = Object.create(CachingWriter.prototype);

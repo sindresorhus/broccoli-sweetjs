@@ -38,6 +38,19 @@ Use the same syntax as you would in `require()`:
 - npm module: `'module-name'`
 - local file: `'./file-name'`
 
+##### readtableModules
+
+Type: `Array`  
+Default: `[]`
+
+A list of readtable-based plugins you want to use.
+
+Use the same syntax as you would in `require()`:
+
+- npm module: `'module-name'`
+- local file: `'./file-name'`
+
+
 ##### sourceMap
 
 Type: `Boolean`  
