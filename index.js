@@ -34,15 +34,20 @@ SweetjsFilter.prototype.updateCache = function(srcDir, destDir) {
 			var srcCode = fs.readFileSync(path.join(srcDir, relativePath), {encoding: 'utf-8'});
 			var fileOptions = options;
 			fileOptions['filename'] = relativePath;
-			var result = sweetjs.compile(srcCode, fileOptions);
-			var destRelativePath = relativePath.replace('.sjs', '.js');
-			if (options.sourceMap) {
-				var mapRelativePath = destRelativePath + '.map';
-				var sourceMap = convert.fromJSON(result.sourceMap).setProperty('sourcesContent', [srcCode]).toJSON();
-				fs.writeFileSync(path.join(destDir, destRelativePath), result.code + '\n//# sourceMappingURL=' + mapRelativePath);
-				fs.writeFileSync(path.join(destDir, mapRelativePath), sourceMap);
-			} else {
-				fs.writeFileSync(path.join(destDir, destRelativePath), result.code);
+			try {
+				var result = sweetjs.compile(srcCode, fileOptions);
+				var destRelativePath = relativePath.replace('.sjs', '.js');
+				if (options.sourceMap) {
+					var mapRelativePath = destRelativePath + '.map';
+					var sourceMap = convert.fromJSON(result.sourceMap).setProperty('sourcesContent', [srcCode]).toJSON();
+					fs.writeFileSync(path.join(destDir, destRelativePath), result.code + '\n//# sourceMappingURL=' + mapRelativePath);
+					fs.writeFileSync(path.join(destDir, mapRelativePath), sourceMap);
+				} else {
+					fs.writeFileSync(path.join(destDir, destRelativePath), result.code);
+				}
+			} catch (e) {
+				console.log("Error in file " + relativePath);
+				throw e;
 			}
 		}
 	});
