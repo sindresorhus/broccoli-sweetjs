@@ -38,6 +38,35 @@ Use the same syntax as you would in `require()`:
 - npm module: `'module-name'`
 - local file: `'./file-name'`
 
+##### readtableModules
+
+Type: `Array`  
+Default: `[]`
+
+A list of readtable-based plugins you want to use.
+
+Use the same syntax as you would in `require()`:
+
+- npm module: `'module-name'`
+- local file: `'./file-name'`
+
+
+##### sourceMap
+
+Type: `Boolean`  
+Default: `false`
+
+Whether you want to output a [source map] for easier debugging.
+
+[source map]: http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/
+
+##### readableNames
+
+Type: `Boolean`  
+Default: `false`
+
+Whether you want to clean up variables that were renamed from hygiene (foo$100 becomes foo where ever possible).
+Only supports ES5 code.
 
 ## License
 
