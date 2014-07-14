@@ -30,7 +30,7 @@ SweetjsFilter.prototype.updateCache = function(srcDir, destDir) {
 	walkSync(srcDir).forEach(function(relativePath) {
 		if (relativePath.slice(-1) === '/') {
 			mkdirp.sync(path.join(destDir, relativePath));
-		} else {
+		} else if (relativePath.slice(-2) === 'js') { // both .sjs and .js
 			var srcCode = fs.readFileSync(path.join(srcDir, relativePath), {encoding: 'utf-8'});
 			var fileOptions = options;
 			fileOptions['filename'] = relativePath;
