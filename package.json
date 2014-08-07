@@ -34,6 +34,7 @@
   "devDependencies": {
     "broccoli": "^0.11.0",
     "mocha": "*",
-    "rimraf": "^2.2.6"
+    "es6-macros": "0.0.7",
+    "chai": "^1.9.1"
   }
 }

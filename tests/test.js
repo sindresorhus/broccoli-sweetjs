@@ -1,8 +1,8 @@
 'use strict';
-var fs       = require('fs');
+var fs = require('fs');
 var broccoli = require('broccoli');
 var sweetjs = require ('./../index.js');
-var assert = require('assert');
+var expect = require('chai').expect;
 
 var builder;
 
@@ -16,13 +16,26 @@ describe('broccoli-sweetjs', function(){
 
 	describe('with defaults', function(){
 		it('expands macros defined in tree', function(){
-			var sourcePath = 'tests/fixtures/simple';
-			var tree = sweetjs(sourcePath);
+			var tree = sweetjs('tests/fixtures/defaults');
 
 			builder = new broccoli.Builder(tree);
 			return builder.build().then(function(results) {
-				var dir = results.directory;
-				assert(/var x\$\d{3} = \$y/.test(fs.readFileSync(dir + '/fixture.js', 'utf8')));
+				var file = fs.readFileSync(results.directory + '/fixture.js', 'utf8');
+				expect(file).to.match(/var x\$\d{3} = \$y/);
+			});
+		});
+	});
+
+	describe('with modules', function(){
+		it('expands macros defined in loaded node module', function(){
+			var tree = sweetjs('tests/fixtures/modules', {
+				modules: ['es6-macros']
+			});
+
+			builder = new broccoli.Builder(tree);
+			return builder.build().then(function(results) {
+				var file = fs.readFileSync(results.directory + '/class.js', 'utf8');
+				expect(file).to.match(/Person\$\d+\.prototype\.say/);
 			});
 		});
 	});
