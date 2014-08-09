@@ -38,4 +38,18 @@ describe('broccoli-sweetjs', function () {
 			});
 		});
 	});
+
+	describe('with readtables', function () {
+		it('expands macros defined in loaded readtable module', function () {
+			var tree = sweetjs('test/fixture/readtable', {
+				readtables: ['jsx-reader']
+			});
+
+			builder = new broccoli.Builder(tree);
+			return builder.build().then(function (results) {
+				var file = fs.readFileSync(results.directory + '/jsx.js', 'utf8');
+				expect(file).to.match(/var div\$\d+ = React\.DOM\.div/);
+			});
+		});
+	});
 });

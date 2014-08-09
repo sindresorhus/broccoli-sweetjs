@@ -36,6 +36,7 @@
     "broccoli": "^0.12.3",
     "chai": "^1.9.1",
     "es6-macros": "0.0.7",
-    "mocha": "*"
+    "mocha": "*",
+    "jsx-reader": "^0.1.1"
   }
 }
