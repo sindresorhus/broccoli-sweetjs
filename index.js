@@ -23,6 +23,12 @@ function SweetjsFilter(inputTree, options) {
 			return moduleCache[mod];
 		});
 	}
+
+	if (this.options.readtables) {
+		this.options.readtables.forEach(function (readtable) {
+			sweetjs.setReadtable(readtable);
+		});
+	}
 }
 
 SweetjsFilter.prototype = Object.create(Filter.prototype);
