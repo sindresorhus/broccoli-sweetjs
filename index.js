@@ -1,6 +1,5 @@
 'use strict';
 var Filter = require('broccoli-filter');
-var sweetjs = require('sweet.js');
 var objectAssign = require('object-assign');
 var moduleCache = [];
 
@@ -9,6 +8,7 @@ function SweetjsFilter(inputTree, options) {
 		return new SweetjsFilter(inputTree, options);
 	}
 
+	this.sweetjs = require('sweet.js');
 	this.inputTree = inputTree;
 	this.options = objectAssign({}, options || {});
 
@@ -18,16 +18,16 @@ function SweetjsFilter(inputTree, options) {
 				return moduleCache[mod];
 			}
 
-			moduleCache[mod] = sweetjs.loadNodeModule(process.cwd(), mod);
+			moduleCache[mod] = this.sweetjs.loadNodeModule(process.cwd(), mod);
 
 			return moduleCache[mod];
-		});
+		}, this);
 	}
 
 	if (this.options.readtables) {
 		this.options.readtables.forEach(function (readtable) {
-			sweetjs.setReadtable(readtable);
-		});
+			this.sweetjs.setReadtable(readtable);
+		}, this);
 	}
 }
 
@@ -38,7 +38,7 @@ SweetjsFilter.prototype.extensions = ['js', 'sjs'];
 SweetjsFilter.prototype.targetExtension = 'js';
 
 SweetjsFilter.prototype.processString = function (str) {
-	return sweetjs.compile(str, this.options).code;
+	return this.sweetjs.compile(str, this.options).code;
 };
 
 module.exports = SweetjsFilter;
