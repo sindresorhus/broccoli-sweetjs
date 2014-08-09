@@ -7,7 +7,7 @@
 
 ## Install
 
-```bash
+```sh
 $ npm install --save broccoli-sweetjs
 ```
 
@@ -28,7 +28,7 @@ tree = sweetjs(tree, options);
 
 ##### modules
 
-Type: `Array`  
+Type: `array`  
 Default: `[]`
 
 A list of macros you want to use.
@@ -41,4 +41,4 @@ Use the same syntax as you would in `require()`:
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com)

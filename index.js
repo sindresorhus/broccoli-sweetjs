@@ -1,7 +1,7 @@
 'use strict';
 var Filter = require('broccoli-filter');
 var sweetjs = require('sweet.js');
-
+var objectAssign = require('object-assign');
 var moduleCache = [];
 
 function SweetjsFilter(inputTree, options) {
@@ -10,14 +10,16 @@ function SweetjsFilter(inputTree, options) {
 	}
 
 	this.inputTree = inputTree;
-	this.options = options || {};
+	this.options = objectAssign({}, options || {});
 
-	if(this.options.modules) {
-		this.options.modules = this.options.modules.map(function(mod) {
-			if(moduleCache[mod]) {
+	if (this.options.modules) {
+		this.options.modules = this.options.modules.map(function (mod) {
+			if (moduleCache[mod]) {
 				return moduleCache[mod];
 			}
+
 			moduleCache[mod] = sweetjs.loadNodeModule(process.cwd(), mod);
+
 			return moduleCache[mod];
 		});
 	}

@@ -13,7 +13,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha tests/"
+    "test": "mocha"
   },
   "files": [
     "index.js"
@@ -28,13 +28,14 @@
     "transpile"
   ],
   "dependencies": {
-    "broccoli-filter": "^0.1.1",
+    "broccoli-filter": "^0.1.6",
+    "object-assign": "^0.3.1",
     "sweet.js": "^0.7.0"
   },
   "devDependencies": {
-    "broccoli": "^0.11.0",
-    "mocha": "*",
+    "broccoli": "^0.12.3",
+    "chai": "^1.9.1",
     "es6-macros": "0.0.7",
-    "chai": "^1.9.1"
+    "mocha": "*"
   }
 }
