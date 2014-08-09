@@ -38,6 +38,17 @@ Use the same syntax as you would in `require()`:
 - npm module: `'module-name'`
 - local file: `'./file-name'`
 
+##### readtables
+
+Type: `array`  
+Default: `[]`
+
+A list of readtable extensions you want to use.
+
+Use the same syntax as you would in `require()`:
+
+- npm module: `'module-name'`
+- local file: `'./file-name'`
 
 ## License
 
