@@ -2,6 +2,8 @@
 var Filter = require('broccoli-filter');
 var sweetjs = require('sweet.js');
 
+var moduleCache = [];
+
 function SweetjsFilter(inputTree, options) {
 	if (!(this instanceof SweetjsFilter)) {
 		return new SweetjsFilter(inputTree, options);
@@ -9,6 +11,16 @@ function SweetjsFilter(inputTree, options) {
 
 	this.inputTree = inputTree;
 	this.options = options || {};
+
+	if(this.options.modules) {
+		this.options.modules = this.options.modules.map(function(mod) {
+			if(moduleCache[mod]) {
+				return moduleCache[mod];
+			}
+			moduleCache[mod] = sweetjs.loadNodeModule(process.cwd(), mod);
+			return moduleCache[mod];
+		});
+	}
 }
 
 SweetjsFilter.prototype = Object.create(Filter.prototype);
