@@ -1,6 +1,7 @@
 'use strict';
 var Filter = require('broccoli-filter');
 var objectAssign = require('object-assign');
+var requireUncached = require('require-uncached');
 var moduleCache = [];
 
 function SweetjsFilter(inputTree, options) {
@@ -8,7 +9,7 @@ function SweetjsFilter(inputTree, options) {
 		return new SweetjsFilter(inputTree, options);
 	}
 
-	this.sweetjs = require('sweet.js');
+	this.sweetjs = requireUncached('sweet.js');
 	this.inputTree = inputTree;
 	this.options = objectAssign({}, options || {});
 
