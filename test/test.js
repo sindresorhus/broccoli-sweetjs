@@ -1,10 +1,17 @@
 'use strict';
 var fs = require('fs');
 var broccoli = require('broccoli');
-var expect = require('chai').expect;
+var mergeTrees = require('broccoli-merge-trees');
+var pickFiles = require('broccoli-static-compiler');
+var chai = require('chai');
+var sinon = require('sinon');
+var sinonChai = require('sinon-chai');
 var sweetjs = require ('./../');
 
+var expect = chai.expect;
 var builder;
+
+chai.use(sinonChai);
 
 describe('broccoli-sweetjs', function () {
 	afterEach(function () {
@@ -49,6 +56,32 @@ describe('broccoli-sweetjs', function () {
 			return builder.build().then(function (results) {
 				var file = fs.readFileSync(results.directory + '/jsx.js', 'utf8');
 				expect(file).to.match(/var div\$\d+ = React\.DOM\.div/);
+			});
+		});
+
+		it('has separate readtable extensions for multiple instances', function () {
+			var spy = sinon.spy();
+			var treeA = pickFiles('.' , {
+				srcDir: 'test/fixture/readtable',
+				files: ['jsx.js'],
+				destDir: '/'
+			});
+
+			var treeB = pickFiles('.' , {
+				srcDir: 'test/fixture/readtable',
+				files: ['jsx2.js'],
+				destDir: '/'
+			});
+
+			treeA = sweetjs(treeA, {
+				readtables: ['jsx-reader']
+			});
+
+			treeB = sweetjs(treeB, {});
+
+			builder = new broccoli.Builder(mergeTrees([treeA, treeB]));
+			return builder.build().then(function () {}, spy).finally(function () {
+				expect(spy).to.have.been.called;
 			});
 		});
 	});
