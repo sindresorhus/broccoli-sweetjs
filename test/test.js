@@ -14,6 +14,8 @@ var builder;
 chai.use(sinonChai);
 
 describe('broccoli-sweetjs', function () {
+	this.timeout(20000);
+
 	afterEach(function () {
 		if (builder) {
 			builder.cleanup();
