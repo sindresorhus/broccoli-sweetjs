@@ -31,7 +31,7 @@
     "broccoli-filter": "^0.1.6",
     "object-assign": "^1.0.0",
     "require-uncached": "^1.0.2",
-    "sweet.js": "^0.7.0"
+    "sweet.js": "^0.7.1"
   },
   "devDependencies": {
     "broccoli": "^0.12.3",
