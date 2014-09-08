@@ -1,6 +1,6 @@
 {
   "name": "broccoli-sweetjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Transpile Sweet.js macros",
   "license": "MIT",
   "repository": "sindresorhus/broccoli-sweetjs",
