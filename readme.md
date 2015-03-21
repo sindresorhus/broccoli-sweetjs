@@ -7,8 +7,8 @@
 
 ## Install
 
-```sh
-$ npm install --save broccoli-sweetjs
+```
+$ npm install --save-dev broccoli-sweetjs
 ```
 
 
@@ -22,7 +22,7 @@ tree = sweetjs(tree, options);
 
 ## API
 
-### sweetjs(tree, options)
+### sweetjs(tree, [options])
 
 #### options
 
@@ -49,6 +49,7 @@ Use the same syntax as you would in `require()`:
 
 - npm module: `'module-name'`
 - local file: `'./file-name'`
+
 
 ## License
 
