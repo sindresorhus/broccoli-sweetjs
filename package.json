@@ -28,8 +28,8 @@
     "transpile"
   ],
   "dependencies": {
-    "broccoli-filter": "^0.1.6",
-    "object-assign": "^2.0.0",
+    "broccoli-filter": "^1.2.2",
+    "object-assign": "^4.0.1",
     "require-uncached": "^1.0.2",
     "sweet.js": "^0.7.1"
   },

@@ -9,6 +9,8 @@ function SweetjsFilter(inputTree, options) {
 		return new SweetjsFilter(inputTree, options);
 	}
 
+	Filter.call(this, inputTree);
+
 	this.sweetjs = requireUncached('sweet.js');
 	this.inputTree = inputTree;
 	this.options = objectAssign({}, options || {});
