@@ -34,10 +34,10 @@
     "sweet.js": "^0.7.1"
   },
   "devDependencies": {
-    "broccoli": "^0.13.0",
-    "broccoli-merge-trees": "^0.2.0",
+    "broccoli": "^0.16.9",
+    "broccoli-merge-trees": "^1.1.0",
     "broccoli-static-compiler": "^0.2.0",
-    "chai": "^1.9.1",
+    "chai": "^3.4.1",
     "es6-macros": "0.0.7",
     "jsx-reader": "^0.1.1",
     "mocha": "*",
